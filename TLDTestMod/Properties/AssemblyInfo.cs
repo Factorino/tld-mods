@@ -1,15 +1,24 @@
 ﻿using MelonLoader;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using BuildInfo = TLDTestMod.BuildInfo;
 
-[assembly: AssemblyTitle("TLDTestMod")]
-[assembly: AssemblyDescription("Test mod for The Long Dark")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TLDTestMod")]
-[assembly: AssemblyCopyright("Copyright © 2026")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyVersion("1.0.0")]
-[assembly: AssemblyFileVersion("1.0.0")]
+[assembly: AssemblyTitle(BuildInfo.Name)]
+[assembly: AssemblyDescription(BuildInfo.Description)]
+[assembly: AssemblyCompany(BuildInfo.Company)]
+[assembly: AssemblyProduct(BuildInfo.Product)]
+[assembly: AssemblyCopyright(BuildInfo.Copyright)]
+[assembly: AssemblyTrademark(BuildInfo.Trademark)]
+[assembly: AssemblyCulture(BuildInfo.Culture)]
 
-[assembly: MelonInfo(typeof(TLDTestMod.Main), "TLDTestMod", "1.0.0", "Factorino")]
+[assembly: AssemblyVersion(BuildInfo.Version)]
+[assembly: AssemblyFileVersion(BuildInfo.Version)]
+
+[assembly: ComVisible(false)]
+[assembly: Guid("336CB1E0-AC1D-41BA-ACB7-A61A838D35C6")]
+
+[assembly: MelonInfo(typeof(TLDTestMod.Main), BuildInfo.GUIName, BuildInfo.Version, BuildInfo.Author, BuildInfo.DownloadLink)]
 [assembly: MelonGame("Hinterland", "TheLongDark")]
+
+[assembly: MelonPriority(BuildInfo.Priority)]
+[assembly: MelonIncompatibleAssemblies(null)]
