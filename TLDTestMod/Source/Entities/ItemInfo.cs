@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace TLDTestMod.Entities
+namespace TLDTestMod.Source.Entities
 {
     public class ItemInfo
     {

@@ -1,10 +1,10 @@
 ﻿using Il2Cpp;
 using Il2CppRewired.Utils;
 using Il2CppTLD.Gear;
-using TLDTestMod.Entities;
+using TLDTestMod.Source.Entities;
 using UnityEngine;
 
-namespace TLDTestMod
+namespace TLDTestMod.Source.Utilities
 {
     public static class GearItemMapper
     {
@@ -12,17 +12,17 @@ namespace TLDTestMod
         {
             return new ItemInfo
             {
-                Name = GetItemName(item),
-                Type = DetermineGearType(item),
-                Condition = FormatCondition(item),
-                Count = GetItemCount(item)
+                Name = _getItemName(item),
+                Type = _getGearType(item),
+                Condition = _getCondition(item),
+                Count = _getItemCount(item)
             };
         }
 
-        private static string GetItemName(GearItem item) =>
+        private static string _getItemName(GearItem item) =>
             !string.IsNullOrEmpty(item.DisplayName) ? item.DisplayName : item.name;
 
-        private static GearType DetermineGearType(GearItem item)
+        private static GearType _getGearType(GearItem item)
         {
             if (item.IsAnyGearType(GearType.Clothing)) return GearType.Clothing;
             if (item.IsAnyGearType(GearType.Firestarting)) return GearType.Firestarting;
@@ -33,7 +33,7 @@ namespace TLDTestMod
             return GearType.Other;
         }
 
-        private static string FormatCondition(GearItem item)
+        private static string _getCondition(GearItem item)
         {
             if (item.IsNullOrDestroyed())
             {
@@ -45,7 +45,7 @@ namespace TLDTestMod
             return $"{percent}%";
         }
 
-        private static int GetItemCount(GearItem item)
+        private static int _getItemCount(GearItem item)
         {
             var stackable = item.GetComponent<StackableItem>();
             return stackable != null && stackable.m_Units > 0 ? stackable.m_Units : 1;

@@ -3,20 +3,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TLDTestMod.Entities
+namespace TLDTestMod.Source.Entities
 {
-    public class BaseReport
+    public class SceneReport
     {
         public string SceneName { get; set; } = string.Empty;
 
-        public DateTime ScanTime { get; set; } = DateTime.MinValue;
+        public DateTime ScanTime { get; set; } = DateTime.Now;
 
         public List<ItemInfo> Clothing { get; set; } = new List<ItemInfo>();
+        
         public List<ItemInfo> Firestarting { get; set; } = new List<ItemInfo>();
+        
         public List<ItemInfo> FirstAid { get; set; } = new List<ItemInfo>();
+        
         public List<ItemInfo> Food { get; set; } = new List<ItemInfo>();
+        
         public List<ItemInfo> Tools { get; set; } = new List<ItemInfo>();
+        
         public List<ItemInfo> Materials { get; set; } = new List<ItemInfo>();
+        
         public List<ItemInfo> Other { get; set; } = new List<ItemInfo>();
 
         public void AddItem(ItemInfo item)
