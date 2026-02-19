@@ -1,7 +1,6 @@
 ﻿using Il2Cpp;
 using MelonLoader;
-using TLDTestMod.Source.Entities;
-using TLDTestMod.Source.Services;
+using System.Collections;
 using UnityEngine;
 
 namespace TLDTestMod
@@ -9,89 +8,42 @@ namespace TLDTestMod
     public class Main : MelonMod
     {
         private MelonLogger.Instance _logger = null!;
-        private FileManager _fileManager = null!;
-        private GearScanner _gearScanner = null!;
-
-        private SessionReport _currentSessionReport = null!;
-        private string _currentSession = string.Empty;
-        private string _currentScene = string.Empty;
-
-        private bool _scanPressed;
-        private bool _deletePressed;
 
         public override void OnInitializeMelon()
         {
             _logger = new MelonLogger.Instance(Info.Name);
             _logger.Msg($"Version {Info.Version} loaded");
-
-            Settings.Initialize();
-            _fileManager = new FileManager(Info.Name, _logger);
-            _gearScanner = new GearScanner(_logger, _fileManager);
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
-            _currentScene = sceneName;
-            _updateSessionContext();
-
-            if (Settings.Options.DebugLogs)
-            {
-                _logger.Msg($"Scene loaded: {sceneName} | Session: {_currentSession}");
-            }
+            _logger.Msg($"Scene loaded: {sceneName}");
+            MelonCoroutines.Start(_logic(sceneName));
         }
 
-        public override void OnUpdate()
+        private IEnumerator _logic(string sceneName)
         {
-            _updateSessionContext();
+            yield return new WaitForSeconds(2f);
 
-            if (Input.GetKeyDown(Settings.Options.ScanKey) && !_scanPressed)
+            Container[] containers = UnityEngine.Object.FindObjectsByType<Container>(FindObjectsSortMode.None);
+            _logger.Msg($"Found {containers.Length} containers in scene {sceneName}:");
+
+            for (int i = 0; i < containers.Length; i++)
             {
-                _scanPressed = true;
-                if (!string.IsNullOrEmpty(_currentScene) && _currentSessionReport != null)
+                Container container = containers[i];
+                if (!container.gameObject.activeInHierarchy)
                 {
-                    _gearScanner.ScanScene(_currentScene, _currentSession, _currentSessionReport);
+                    continue;
                 }
-            }
-            else if (Input.GetKeyUp(Settings.Options.ScanKey))
-            {
-                _scanPressed = false;
-            }
 
-            if (Input.GetKeyDown(Settings.Options.DeleteKey) && !_deletePressed)
-            {
-                _deletePressed = true;
-                if (!string.IsNullOrEmpty(_currentScene) && _currentSessionReport != null)
+                GearItem[] gearItems = container.GetComponentsInChildren<GearItem>(includeInactive: true);
+                _logger.Msg($"  [{i + 1}] Container: {container.name} with {gearItems.Length} items:");
+
+                for (int j = 0; j < gearItems.Length; j++)
                 {
-                    _gearScanner.RemoveSceneFromSession(_currentScene, _currentSession, _currentSessionReport);
+                    GearItem gearItem = gearItems[j];
+                    _logger.Msg($"\t[{j + 1}] Gear: {gearItem.name}");
                 }
-            }
-            else if (Input.GetKeyUp(Settings.Options.DeleteKey))
-            {
-                _deletePressed = false;
-            }
-        }
-
-        private void _updateSessionContext()
-        {
-            string newSession = _getCurrentSaveSlot();
-
-            if (newSession != _currentSession)
-            {
-                _currentSession = newSession;
-                _currentSessionReport = _fileManager.LoadSessionReport(_currentSession);
-                _logger.Msg(System.ConsoleColor.Cyan, $"Session switched: Slot {_currentSession}");
-            }
-        }
-
-        private string _getCurrentSaveSlot()
-        {
-            try
-            {
-                return SaveGameSystem.GetCurrentSaveName() ?? "Unknown";
-            }
-            catch
-            {
-                return "NoSave";
             }
         }
     }
