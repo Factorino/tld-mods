@@ -12,6 +12,7 @@ namespace TLDTestMod.Source.Utilities
         {
             return new ItemInfo
             {
+                Id = item.name,
                 Name = _getItemName(item),
                 Type = _getGearType(item),
                 Condition = _getCondition(item),
@@ -47,7 +48,7 @@ namespace TLDTestMod.Source.Utilities
 
         private static int _getItemCount(GearItem item)
         {
-            var stackable = item.GetComponent<StackableItem>();
+            StackableItem stackable = item.GetComponent<StackableItem>();
             return stackable != null && stackable.m_Units > 0 ? stackable.m_Units : 1;
         }
     }

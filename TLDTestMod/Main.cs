@@ -8,7 +8,6 @@ namespace TLDTestMod
 {
     public class Main : MelonMod
     {
-        private MelonLogger.Instance _logger = null!;
         private FileManager _fileManager = null!;
         private GearScanner _gearScanner = null!;
 
@@ -18,6 +17,8 @@ namespace TLDTestMod
 
         private bool _scanPressed;
         private bool _deletePressed;
+
+        private MelonLogger.Instance _logger = null!;
 
         public override void OnInitializeMelon()
         {

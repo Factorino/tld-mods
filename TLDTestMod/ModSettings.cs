@@ -7,15 +7,15 @@ namespace TLDTestMod
     {
         [Section("Controls")]
 
-        [Name("Scan Report Key")]
+        [Name("Generate Location Report")]
         [Description("Press to create/update report for current location")]
-        public KeyCode ScanKey = KeyCode.F10;
+        public KeyCode ScanKey = KeyCode.Insert;
 
-        [Name("Delete Location Key")]
+        [Name("Delete Location Report")]
         [Description("Press to remove current location from session report")]
-        public KeyCode DeleteKey = KeyCode.F11;
+        public KeyCode DeleteKey = KeyCode.Delete;
 
-        [Section("🔧 Advanced")]
+        [Section("Advanced")]
 
         [Name("Enable Debug Logs")]
         [Description("Show detailed processing info in console")]
@@ -40,7 +40,7 @@ namespace TLDTestMod
             if (Options == null)
             {
                 Options = new ModSettings();
-                Options.AddToModSettings("TLD Gear Scanner");
+                Options.AddToModSettings("Gear Log");
             }
         }
     }

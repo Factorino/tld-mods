@@ -1,0 +1,283 @@
+{
+  "SessionName": "sandbox10",
+  "SessionStart": "2026-02-19 19:00:16",
+  "LastUpdated": "2026-02-19 19:00:24",
+  "Scenes": {
+    "CampOffice_DLC01": {
+      "SceneName": "CampOffice_DLC01",
+      "ScanTime": "2026-02-19 19:00:24",
+      "Clothing": [
+        {
+          "Id": "GEAR_BasicBoots",
+          "Name": "Походные ботинки",
+          "Type": "Clothing",
+          "Condition": "32%",
+          "Count": 1
+        }
+      ],
+      "Firestarting": [
+        {
+          "Id": "GEAR_PaperStack",
+          "Name": "Стопка бумаги",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 11
+        },
+        {
+          "Id": "GEAR_ReclaimedWoodB",
+          "Name": "Древесина",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 2
+        },
+        {
+          "Id": "GEAR_BookManual",
+          "Name": "Книга",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_NewsprintRoll",
+          "Name": "Газетный рулон.",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_MagnifyingLens",
+          "Name": "Увеличительное стекло",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_BookC",
+          "Name": "Книга",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_BookF",
+          "Name": "Книга",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_Newsprint",
+          "Name": "Газета",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_BookB",
+          "Name": "Книга",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_BookRifleFirearm",
+          "Name": "Стрельба на фронтире",
+          "Type": "Firestarting",
+          "Condition": "100%",
+          "Count": 1
+        }
+      ],
+      "FirstAid": [
+        {
+          "Id": "GEAR_BottleAntibiotics",
+          "Name": "Антибиотики",
+          "Type": "FirstAid",
+          "Condition": "55%",
+          "Count": 6
+        },
+        {
+          "Id": "GEAR_BottlePainKillers",
+          "Name": "Обезболивающие",
+          "Type": "FirstAid",
+          "Condition": "40%",
+          "Count": 6
+        }
+      ],
+      "Food": [
+        {
+          "Id": "GEAR_Broth",
+          "Name": "Бульон",
+          "Type": "Food",
+          "Condition": "51%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_Salt",
+          "Name": "Соль",
+          "Type": "Food",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_MapleSyrup",
+          "Name": "Кленовый сироп",
+          "Type": "Food",
+          "Condition": "85%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_KetchupChips",
+          "Name": "Чипсы с кетчупом",
+          "Type": "Food",
+          "Condition": "45%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_SodaOrange",
+          "Name": "Апельсиновая содовая вода",
+          "Type": "Food",
+          "Condition": "37%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_CookingOil",
+          "Name": "Масло для жарки",
+          "Type": "Food",
+          "Condition": "40%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_TomatoSoupCan",
+          "Name": "Томатный суп",
+          "Type": "Food",
+          "Condition": "80%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_Flour",
+          "Name": "Мука «Старая мельница»",
+          "Type": "Food",
+          "Condition": "73%",
+          "Count": 1
+        }
+      ],
+      "Tools": [
+        {
+          "Id": "GEAR_RecycledCan",
+          "Name": "Пустая банка",
+          "Type": "Tool",
+          "Condition": "78%",
+          "Count": 6
+        },
+        {
+          "Id": "GEAR_Line",
+          "Name": "Леска",
+          "Type": "Tool",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_Hook",
+          "Name": "Крючок",
+          "Type": "Tool",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_SprayPaintCan",
+          "Name": "Баллончик с краской",
+          "Type": "Tool",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_SharpeningStone",
+          "Name": "Точильный камень",
+          "Type": "Tool",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_CanOpener",
+          "Name": "Консервный нож",
+          "Type": "Tool",
+          "Condition": "79%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_KeroseneLampB",
+          "Name": "Штормовой фонарь",
+          "Type": "Tool",
+          "Condition": "85%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_Skillet",
+          "Name": "Сковорода",
+          "Type": "Tool",
+          "Condition": "37%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_CookingPot",
+          "Name": "Котелок",
+          "Type": "Tool",
+          "Condition": "89%",
+          "Count": 1
+        }
+      ],
+      "Materials": [],
+      "Other": [
+        {
+          "Id": "GEAR_BedRoll",
+          "Name": "Спальный мешок",
+          "Type": "Other",
+          "Condition": "95%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_CougarPoster1",
+          "Name": "Листовка «Осторожно, пумы!»",
+          "Type": "Other",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_Trader_Pamphlet",
+          "Name": "Страница из старой газеты.",
+          "Type": "Other",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_FilmBoxColour",
+          "Name": "FastFilm-500",
+          "Type": "Other",
+          "Condition": "100%",
+          "Count": 6
+        },
+        {
+          "Id": "GEAR_BackerNote1B",
+          "Name": "Оставленная записка",
+          "Type": "Other",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_JerrycanRusty",
+          "Name": "Канистра с горючим",
+          "Type": "Other",
+          "Condition": "100%",
+          "Count": 1
+        },
+        {
+          "Id": "GEAR_LampFuel",
+          "Name": "Топливо для фонаря",
+          "Type": "Other",
+          "Condition": "100%",
+          "Count": 2
+        }
+      ]
+    }
+  }
+}

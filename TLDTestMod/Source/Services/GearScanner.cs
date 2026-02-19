@@ -29,30 +29,21 @@ namespace TLDTestMod
                 ScanTime = DateTime.Now
             };
 
-            GearItem[] items = UnityEngine.Object.FindObjectsByType<GearItem>(FindObjectsSortMode.None);
             int processed = 0;
 
-            foreach (GearItem item in items)
+            GearItem[] items = UnityEngine.Object.FindObjectsByType<GearItem>(FindObjectsSortMode.None);
+            processed += _processItems(report, items);
+
+            Container[] containers = UnityEngine.Object.FindObjectsByType<Container>(FindObjectsSortMode.None);
+            foreach (Container container in containers)
             {
-                if (item == null || !item.gameObject.activeInHierarchy)
-                {
-                    continue; 
-                } 
-                if (!Settings.Options.IncludeDestroyed && item.IsNullOrDestroyed())
+                if (!container.gameObject.activeInHierarchy)
                 {
                     continue;
                 }
 
-                try
-                {
-                    var info = GearItemMapper.MapToItemInfo(item);
-                    report.AddItem(info);
-                    processed++;
-                }
-                catch (Exception ex)
-                {
-                    _logger.Warning($"Error processing '{item?.name}': {ex.Message}");
-                }
+                GearItem[] containerItems = container.GetComponentsInChildren<GearItem>(includeInactive: true);
+                processed += _processItems(report, containerItems);
             }
 
             sessionReport.AddOrUpdateScene(report);
@@ -72,6 +63,36 @@ namespace TLDTestMod
             _fileManager.SaveSessionReport(sessionReport);
             _logger.Msg(ConsoleColor.Yellow, $"Removed: {sceneName} from Session {sessionName}");
             return true;
+        }
+
+        private int _processItems(SceneReport report, GearItem[] items)
+        {
+            int processed = 0;
+
+            foreach (GearItem item in items)
+            {
+                if (item == null || !item.gameObject.activeInHierarchy)
+                {
+                    continue;
+                }
+                if (!Settings.Options.IncludeDestroyed && item.IsNullOrDestroyed())
+                {
+                    continue;
+                }
+
+                try
+                {
+                    ItemInfo info = GearItemMapper.MapToItemInfo(item);
+                    report.AddItem(info);
+                    processed++;
+                }
+                catch (Exception ex)
+                {
+                    _logger.Warning($"Error processing '{item?.name}': {ex.Message}");
+                }
+            }
+
+            return processed;
         }
     }
 }

@@ -11,26 +11,26 @@ namespace TLDTestMod.Source.Entities
 
         public DateTime ScanTime { get; set; } = DateTime.Now;
 
-        public List<ItemInfo> Clothing { get; set; } = new List<ItemInfo>();
+        public List<ItemInfo> Clothing { get; set; } = new();
         
-        public List<ItemInfo> Firestarting { get; set; } = new List<ItemInfo>();
+        public List<ItemInfo> Firestarting { get; set; } = new();
         
-        public List<ItemInfo> FirstAid { get; set; } = new List<ItemInfo>();
+        public List<ItemInfo> FirstAid { get; set; } = new();
         
-        public List<ItemInfo> Food { get; set; } = new List<ItemInfo>();
+        public List<ItemInfo> Food { get; set; } = new();
         
-        public List<ItemInfo> Tools { get; set; } = new List<ItemInfo>();
+        public List<ItemInfo> Tools { get; set; } = new();
         
-        public List<ItemInfo> Materials { get; set; } = new List<ItemInfo>();
+        public List<ItemInfo> Materials { get; set; } = new();
         
-        public List<ItemInfo> Other { get; set; } = new List<ItemInfo>();
+        public List<ItemInfo> Other { get; set; } = new();
 
         public void AddItem(ItemInfo item)
         {
             var targetList = _getListByType(item.Type);
 
             var existing = targetList.FirstOrDefault(i =>
-                i.Name.Equals(item.Name, StringComparison.OrdinalIgnoreCase));
+                i.Id.Equals(item.Id, StringComparison.Ordinal));
 
             if (existing != null)
             {
