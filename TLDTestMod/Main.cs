@@ -1,7 +1,6 @@
-﻿using Il2Cpp;
-using MelonLoader;
-using System.Collections;
-using UnityEngine;
+﻿using MelonLoader;
+using System.IO;
+using TLDTestMod.Components;
 
 namespace TLDTestMod
 {
@@ -11,40 +10,32 @@ namespace TLDTestMod
 
         public override void OnInitializeMelon()
         {
+            Settings.OnLoad();
             _logger = new MelonLogger.Instance(Info.Name);
             _logger.Msg($"Version {Info.Version} loaded");
+
+            string? modsPath = Path.GetDirectoryName(typeof(Main).Assembly.Location);
+            _logger.Msg(System.ConsoleColor.Blue, $"Mods path: {modsPath}");
         }
 
-        public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+        public override void OnSceneWasInitialized(int level, string name)
         {
-            _logger.Msg($"Scene loaded: {sceneName}");
-            MelonCoroutines.Start(_logic(sceneName));
+            if (!Utils.IsScenePlayable(name)) return;
         }
 
-        private IEnumerator _logic(string sceneName)
+        public override void OnUpdate()
         {
-            yield return new WaitForSeconds(2f);
+            BookController.Update();
+        }
 
-            Container[] containers = UnityEngine.Object.FindObjectsByType<Container>(FindObjectsSortMode.None);
-            _logger.Msg($"Found {containers.Length} containers in scene {sceneName}:");
+        public override void OnSceneWasUnloaded(int level, string name)
+        {
+            BookController.OnSceneUnload();
+        }
 
-            for (int i = 0; i < containers.Length; i++)
-            {
-                Container container = containers[i];
-                if (!container.gameObject.activeInHierarchy)
-                {
-                    continue;
-                }
-
-                GearItem[] gearItems = container.GetComponentsInChildren<GearItem>(includeInactive: true);
-                _logger.Msg($"  [{i + 1}] Container: {container.name} with {gearItems.Length} items:");
-
-                for (int j = 0; j < gearItems.Length; j++)
-                {
-                    GearItem gearItem = gearItems[j];
-                    _logger.Msg($"\t[{j + 1}] Gear: {gearItem.name}");
-                }
-            }
+        public override void OnApplicationQuit()
+        {
+            BookController.Cleanup();
         }
     }
 }
