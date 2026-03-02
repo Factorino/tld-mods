@@ -6,11 +6,6 @@ namespace TLDTestMod
 {
     public static class Utils
     {
-        public static string GetCurrentSaveName()
-        {
-            return SaveGameSystem.GetCurrentSaveName();
-        }
-
         public static bool IsScenePlayable(string scene)
         {
             return !(

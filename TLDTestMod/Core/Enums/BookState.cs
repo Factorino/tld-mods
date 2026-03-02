@@ -2,8 +2,10 @@
 {
     public enum BookState
     {
-        Pocket,  // Книга убрана
-        Title,   // Книга в руках, показана обложка
-        Open     // Книга открыта, виден текст
+        Closed,
+        Displayed,
+        Opening,
+        Open,
+        Closing,
     }
 }
