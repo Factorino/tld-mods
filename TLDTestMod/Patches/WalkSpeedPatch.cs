@@ -3,15 +3,12 @@ using Il2Cpp;
 
 namespace SpeedMod.Patches
 {
-    [HarmonyPatch(typeof(vp_FPSController), nameof(vp_FPSController.GetSlopeMultiplier))]
-    internal class SprintSpeedPatch
+    [HarmonyPatch(typeof(SafeCracking), nameof(SafeCracking.EnableSafeCrackingInterface))]
+    internal class SafeCracking_EnableSafeCrackingInterface_Patch
     {
-        public static void Postfix(ref float __result)
+        public static void Postfix(SafeCracking __instance)
         {
-            if (GameManager.GetPlayerManagerComponent().PlayerIsSprinting())
-            {
-                __result *= 3.0f;
-            }
+            __instance.UnlockSafe();
         }
     }
 }

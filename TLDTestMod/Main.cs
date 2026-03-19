@@ -4,9 +4,11 @@ namespace TLDTestMod
 {
     public class Main : MelonMod
     {
+        public static MelonLogger.Instance logger = new MelonLogger.Instance(BuildInfo.Name);
+
         public override void OnInitializeMelon()
         {
-            MelonLogger.Msg("TLDTestMod is loaded");
+            logger.Msg($"Version {Info.Version} loaded");
         }
     }
 }
